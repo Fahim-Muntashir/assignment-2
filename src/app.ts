@@ -12,13 +12,8 @@ app.use(cors())
 app.use('/api',UserRoutes)
 
 
-
-
-const getAController = (req: Request, res: Response) => {
-  res.send('Hello World!')
-}
-
-app.get('/',getAController)
+app.get('/',(req: Request, res: Response) => {
+  res.send('Hello World!')})
 
 export default app;
 
