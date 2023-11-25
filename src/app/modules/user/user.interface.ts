@@ -19,8 +19,7 @@ export type User = {
     address: {
         street: string;
         city: string;
-        country:string
-    }
-   
+        country: string
+    };
     orders: Order[];
 }
