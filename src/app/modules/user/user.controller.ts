@@ -1,20 +1,21 @@
 import { Request, Response } from "express";
 import { UserServices } from "./user.service";
 
-const createUser = async(req:Request, res:Response) => {
-   try {
-    const {user:userData} = req.body;
-    const result = await UserServices.createUser(userData);
-
-    res.status(200).json({
-        success: true,
-        message: "Student Is Created Successfullly",
-        data:result,
-    })
-   } catch (err) {
-    console.log(err);
-   }
-}
+const createUser = async (req: Request, res: Response) => {
+   
+    try {
+        const user = req.body;
+        const result = await UserServices.createUser(user);
+        console.log(result);
+        res.status(200).json({
+            success: true,
+            message: "Users are Here",
+            data:result,
+        })
+    } catch (err) {
+        console.log(err);
+    }
+};  
 
 
 const getAllUser = async (req: Request, res: Response) => {
@@ -73,7 +74,7 @@ const updateUser = async (req: Request, res: Response) => {
 
         const result = await UserServices.updateUserInDB(userIdNum,updatedUserData);
     
-        const { password, ...updatedUserWithoutPassword } = result?.toObject() || {};
+        const {  ...updatedUserWithoutPassword } = result?.toObject() || {};
         res.status(200).json({
             success: true,
             message: "User updated",
@@ -122,6 +123,6 @@ export const UserControllers = {
     getAllUser,
     getSingleUser,
     updateUser,
- deleteUser,
+    deleteUser,
 } 
 

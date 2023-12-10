@@ -2,9 +2,7 @@ import { Schema, model,  } from "mongoose";
 import { User } from "./user.interface";
 
 const userSchema = new Schema<User>({
-    userId: {
-        type: Number, unique: true,
-    },
+    userId: { type: Number, unique: true },
     username: {
         type: String, unique: true,
     },
@@ -22,10 +20,7 @@ const userSchema = new Schema<User>({
         street: String,
         city: String,
         country: String,
-    },
-    orders: [
-        { productName: String ,price:Number,quantity:Number},
-    ],
+    }
 })
 
 const UserModel = model<User>('User', userSchema);
